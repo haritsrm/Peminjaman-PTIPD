@@ -34,7 +34,7 @@ class LoginController extends Controller
         }
         else if (Auth::user()->hasRole('admin'))
         {
-            return redirect()->route('index/admin');
+            return redirect()->route('admin');
         }
         else if (Auth::user()->hasRole('suspend'))
         {

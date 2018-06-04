@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
+Route::group(['middleware' => ['auth', 'role:superadmin' && 'role:admin']], function () {
     //Home Controller
     Route::get('/admina', 'Admin\AdminController@index')->name('admin');
     Route::get('/admina/newadmin', 'Admin\AdminController@new')->name('admin/new');
@@ -40,10 +40,10 @@ Route::group(['middleware' => ['auth', 'role:superadmin']], function () {
     Route::post('/admina/block/{id}', 'Admin\PeminjamanController@block');
 });
 
-Route::group(['middleware' => ['auth', 'role:admin']], function () {
-    //Home Controller
-    Route::get('/admin', 'Admin\AdminController@index')->name('index/admin');
-});
+// Route::group(['middleware' => ['auth', 'role:admin']], function () {
+//     //Home Controller
+//     Route::get('/admin', 'Admin\AdminController@index')->name('index/admin');
+// });
 
 Route::group(['middleware' => ['auth', 'role:suspend']], function () {
     //Home Controller
