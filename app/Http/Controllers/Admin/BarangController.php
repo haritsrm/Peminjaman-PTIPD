@@ -39,8 +39,13 @@ class BarangController extends BaseController
             'description' => $req->input('description'),
             'stock' => $req->input('stock')
         ]);
-        Session::flash('message', 'Success tambah barang!');
-        return redirect()->route('admin/newbarang');
+        Session::flash('message', 'Success tambah '. $req->input('type') .'!');
+        if ($req->input('type') == 'barang'){
+            return redirect()->route('admin/newbarang');
+        }else{
+            return redirect()->route('admin/newruangan');
+        }
+        
     }
 
     public function update(Request $req, $id)
