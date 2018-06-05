@@ -30,30 +30,9 @@
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 control-label">Alamat:</label>
-                <div class="col-lg-9">
-                    <input type="text" name="alamat" class="form-control" placeholder="Alamat">
-                </div>
-            </div>
-
-            <div class="form-group">
                 <label class="col-lg-3 control-label">No Telepon:</label>
                 <div class="col-lg-9">
                     <input type="text" name="no_tlp" class="form-control" placeholder="No Telepon">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Instansi:</label>
-                <div class="col-lg-9">
-                    <input type="text" name="instansi" class="form-control" placeholder="Instansi">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Jabatan:</label>
-                <div class="col-lg-9">
-                    <input type="text" name="jabatan" class="form-control" placeholder="Jabatan">
                 </div>
             </div>
 

@@ -31,10 +31,10 @@ class AdminController extends BaseController
         $admin = User::create([
             'name' => $req->input('name'),
             'email' => $req->input('email'), 
-            'alamat' => $req->input('alamat'),
+            'alamat' => 'Cibiru, Bandung',
             'no_tlp' => $req->input('no_tlp'),
-            'instansi' => $req->input('instansi'),
-            'jabatan' => $req->input('jabatan'),
+            'instansi' => 'UIN Sunan Gunung Djati',
+            'jabatan' => 'admin',
             'password' => bcrypt($req->input('password'))
         ]);
         $admin->attachRole(2);

@@ -1,5 +1,7 @@
 <?php
 
+use App\Barang;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,12 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/barang', function(){
+    $data = Barang::all();
+    return view('welcome')
+    ->with('val', $data);
 });
 
 Auth::routes();

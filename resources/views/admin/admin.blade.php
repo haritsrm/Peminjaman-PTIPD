@@ -3,7 +3,7 @@
 @section('content')
 <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-quarter">
-      <a href="/table barang">
+      <a href="/admina/showbarang">
       <div class="w3-container w3-orange w3-padding-16">
         <div class="w3-left"><img src="/images/dbarang.png" style="width: 80px;height: 80px"></div>
         <div class="w3-right">
@@ -16,7 +16,7 @@
     </a>
     
     <div class="w3-quarter">
-      <a href="/table ruangan">
+      <a href="/admina/showruangan">
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><img src="/images/dtruangan.PNG" style="width: 80px;height: 80px"></div>
         <div class="w3-right">
@@ -28,6 +28,7 @@
     </div>
     </a>
     <div class="w3-quarter">
+      <a href="/admina/showadmin">
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><img src="/images/admins.png" style="width: 80px;height: 80px"></div>
         <div class="w3-right">
@@ -44,6 +45,7 @@
         <div class="w3-clear"></div>
         <h4>Data Admin</h4>
       </div>
+      </a>
     </div>
     
     <div class="w3-quarter">
