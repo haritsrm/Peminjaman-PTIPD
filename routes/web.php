@@ -38,12 +38,9 @@ Route::group(['middleware' => ['auth', 'role:superadmin' && 'role:admin']], func
     Route::get('/admina/verifikasipeminjaman', 'Admin\PeminjamanController@show')->name('admin/verifpeminjaman');
     Route::post('/admina/acc/{id}', 'Admin\PeminjamanController@acc');
     Route::post('/admina/block/{id}', 'Admin\PeminjamanController@block');
+    Route::get('/admina/pengembalian', 'Admin\PengembalianController@show')->name('admin/pengembalian');
+    Route::post('/admina/kembali/{id}', 'Admin\PengembalianController@kembali');
 });
-
-// Route::group(['middleware' => ['auth', 'role:admin']], function () {
-//     //Home Controller
-//     Route::get('/admin', 'Admin\AdminController@index')->name('index/admin');
-// });
 
 Route::group(['middleware' => ['auth', 'role:suspend']], function () {
     //Home Controller
@@ -55,6 +52,10 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     //Home Controller
     Route::get('/home', 'HomeController@index')->name('home');
     //Peminjaman
+    Route::get('/daftarpeminjaman', 'HomeController@show');
     Route::post('/pinjam', 'User\PeminjamanController@pinjam')->name('pinjam');
     Route::post('/verifikasi', 'User\PeminjamanController@verifikasi')->name('verifikasi');
+    Route::post('/pdf/{id}', 'User\PdfController@print');
 });
+
+Route::get('/mail', 'MailController@send');

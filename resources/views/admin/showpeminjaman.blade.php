@@ -24,6 +24,8 @@
                             <span class="label label-primary">Pending</span>
                         @elseif($v->activate == 1)
                             <span class="label label-success">Active</span>
+                        @elseif($v->activate == 2)
+                            <span class="label label-info">Sudah Dikembalikan</span>
                         @else
                             <span class="label label-danger">Blocked</span>
                         @endif
@@ -108,6 +110,8 @@
                             <span class="label label-primary">Pending</span>
                         @elseif($v->activate == 1)
                             <span class="label label-success">Active</span>
+                        @elseif($v->activate == 2)
+                            <span class="label label-info">Sudah Dikembalikan</span>
                         @else
                             <span class="label label-danger">Blocked</span>
                         @endif

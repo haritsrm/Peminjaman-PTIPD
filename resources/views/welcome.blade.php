@@ -159,8 +159,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Nurfi Agnia</a>
-                    <a href="https://laracasts.com">Nida Maria Ulfah</a>
+                    <a href="https://web.facebook.com/teteh.nurfi">Nurfi Agnia</a>
+                    <a href="https://web.facebook.com/nida.mariaulfahanwar">Nida Maria Ulfah</a>
                 </div>
                 <!-- Footer -->
                 <div class="text-muted text-center" style="margin-top:100px">

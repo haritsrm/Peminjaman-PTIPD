@@ -49,7 +49,7 @@
 	<div class="navbar navbar-default navbar-fixed-top header-highlight">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/"><img src="/assets/images/logo_light.png" alt=""></a>
-
+			
 			<ul class="nav navbar-nav pull-right visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
 				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
@@ -163,13 +163,7 @@
                                         <li {{{ (Request::is('admina/verifikasipeminjaman') ? 'class=active' : '') }}}><a href="/admina/verifikasipeminjaman">Verifikasi Peminjaman</a></li>
 									</ul>
 								</li>
-								<li>
-                                    <a href="#"><i class="icon-grab"></i> <span>Pengembalian</span></a>
-									<ul>
-                                        <li {{{ (Request::is('admina/pengembalian') ? 'class=active' : '') }}}><a href="/admina/showruangan">Tampilkan Ruangan</a></li>
-                                        <li {{{ (Request::is('admina/pengembalian') ? 'class=active' : '') }}}><a href="/admina/newruangan">Tambah Ruangan</a></li>
-									</ul>
-                                </li>
+								<li {{{ (Request::is('admina/pengembalian') ? 'class=active' : '') }}}><a href="/admina/pengembalian"><i class="icon-grab"></i><span>Pengembalian Barang</span></a></li>
 								<!-- /main -->
 
 							</ul>

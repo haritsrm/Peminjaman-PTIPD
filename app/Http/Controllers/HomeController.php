@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Barang;
+use App\Acc;
 
 class HomeController extends Controller
 {
@@ -26,5 +27,10 @@ class HomeController extends Controller
     {
         $data = Barang::all();
         return view('home')->with('val',$data);
+    }
+
+    public function show(){
+        $data = Acc::all();
+        return view('daftarpeminjaman')->with('val', $data);
     }
 }

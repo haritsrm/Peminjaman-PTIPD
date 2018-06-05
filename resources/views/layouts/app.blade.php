@@ -69,6 +69,7 @@
                         <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                     @else
+						<li><a href="/daftarpeminjaman" class="nav-link">Peminjaman Saya</a></li>
                         <li class="dropdown dropdown-user">
                             <a class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/images/placeholder.jpg" alt="">

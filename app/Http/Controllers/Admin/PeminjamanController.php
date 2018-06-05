@@ -34,7 +34,7 @@ class PeminjamanController extends BaseController
     public function block($id)
     {
         Acc::find($id)->update([
-            'activate' => 2,
+            'activate' => 5,
         ]);
         Session::flash('message', 'Block data berhasil!');
         return redirect()->route('admin/verifpeminjaman');
