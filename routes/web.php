@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'role:superadmin' && 'role:admin']], func
     Route::post('/admina/block/{id}', 'Admin\PeminjamanController@block');
     Route::get('/admina/pengembalian', 'Admin\PengembalianController@show')->name('admin/pengembalian');
     Route::post('/admina/kembali/{id}', 'Admin\PengembalianController@kembali');
+    //email
+    Route::get('/mail', 'MailController@send');
 });
 
 Route::group(['middleware' => ['auth', 'role:suspend']], function () {
@@ -57,5 +59,3 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::post('/verifikasi', 'User\PeminjamanController@verifikasi')->name('verifikasi');
     Route::post('/pdf/{id}', 'User\PdfController@print');
 });
-
-Route::get('/mail', 'MailController@send');

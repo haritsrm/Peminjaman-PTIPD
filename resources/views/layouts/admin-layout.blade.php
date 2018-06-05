@@ -185,7 +185,15 @@
 						<div class="page-title">
 							<h4>
 								<span class="text-semibold">{{{ (Request::is('admina') ? 'Dashboard' : '') }}}</span>
-                                <span class="text-semibold">{{{ (Request::is('admina/newadmin') ? 'Add admin' : '') }}}</span>  - Admin Panel
+                                <span class="text-semibold">{{{ (Request::is('admina/newadmin') ? 'Tambah Admin' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/showadmin') ? 'Data Admin' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/showbarang') ? 'Data Barang' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/newbarang') ? 'Tambah Barang' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/showruangan') ? 'Data Ruangan' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/newruangan') ? 'Tambah Ruangan' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/peminjaman') ? 'Data Peminjaman' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/verifikasipeminjaman') ? 'Verifikasi Peminjaman' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/pengembalian') ? 'Form Pengembalian' : '') }}}</span>  - Admin Panel
                             </h4>
 						</div>
                         @if (Session::has('message'))
