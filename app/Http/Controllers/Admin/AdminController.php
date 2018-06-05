@@ -21,7 +21,9 @@ class AdminController extends BaseController
 
     public function index()
     {
-        return view('admin.admin');
+        $x = User::all();
+        return view('admin.admin')
+        ->with('data', $x);
     }
 
     public function create(Request $req)
