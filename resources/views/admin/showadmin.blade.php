@@ -27,11 +27,8 @@
             <td>{{ $v->instansi }}</td>
             <td>{{ $v->jabatan }}</td>
             <td><span class="label label-success">Active</span></td>
-            <td class="text-center">
-                <form method="post" action="{{ route('admin/suspend', $v->id) }}">
-                    {{ csrf_field() }}
-                    <center><input type="submit" class="btn btn-xs btn-danger" data-toggle="tooltip" value="Suspend Account"/></center>
-                </form>
+            <td>
+                <center><button onclick="suspendAdmin({{ $v->id }})" class="btn btn-xs btn-danger">Suspend account</button></center>
             </td>
         </tr>
         @endif
@@ -78,4 +75,31 @@
     </tbody>
 </table>
 </div>
+<script>
+function suspendAdmin(id){
+        var csrf_token = $('meta[name="csrf-token"]').attr('content');
+        swal({
+            title: "Yakin akan suspend?",
+            text: "Akun ini akan disuspend!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((value) => {
+            if(value){
+                return fetch("/admina/adminsus/"+id,{
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-Token": $('input[name="_token"]').val()
+                    }
+                })
+                .then(res => {
+                    location.reload();
+                })
+                .catch(err => {
+                    swal("Oops..", "Something went wrong", "error");
+                })
+            }
+        })
+    }
+</script>
 @endsection

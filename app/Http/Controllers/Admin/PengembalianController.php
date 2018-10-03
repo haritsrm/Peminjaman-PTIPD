@@ -8,6 +8,7 @@ use App\Acc;
 use App\Peminjaman;
 use App\Barang;
 use Session;
+use Alert;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -40,7 +41,7 @@ class PengembalianController extends BaseController
                 'stock' => $newstok
             ]);
         }
-        Session::flash('message', 'Pengembalian data berhasil!');
+        Alert::success('Pengembalian Sukses!', 'Pengembalian barang berhasil');
         return redirect()->route('admin/pengembalian');
     }
 }

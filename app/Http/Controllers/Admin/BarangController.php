@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Barang;
 use Session;
+use Alert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class BarangController extends BaseController
@@ -29,21 +30,26 @@ class BarangController extends BaseController
     public function create(Request $req)
     {
         $file = $req->file('pict');
-        $ext = $file->getClientOriginalExtension();
-        $newName = rand(10000,1001238912).".".$ext;
-        $file->move('uploads/', $newName);
-        $barang = Barang::create([
-            'name' => $req->input('name'),
-            'type' => $req->input('type'),
-            'pict' => $newName,
-            'description' => $req->input('description'),
-            'stock' => $req->input('stock')
-        ]);
-        Session::flash('message', 'Success tambah '. $req->input('type') .'!');
-        if ($req->input('type') == 'barang'){
-            return redirect()->route('admin/newbarang');
+        if($file){
+            $ext = $file->getClientOriginalExtension();
+            $newName = rand(10000,1001238912).".".$ext;
+            $file->move('uploads/', $newName);
+            $barang = Barang::create([
+                'name' => $req->input('name'),
+                'type' => $req->input('type'),
+                'pict' => $newName,
+                'description' => $req->input('description'),
+                'stock' => $req->input('stock')
+            ]);
+            Alert::success('Sukses!', 'Barang berhasil diinputkan');
+            if ($req->input('type') == 'barang'){
+                return redirect()->route('admin/newbarang');
+            }else{
+                return redirect()->route('admin/newruangan');
+            }
         }else{
-            return redirect()->route('admin/newruangan');
+            alert()->warning('Gambar tidak boleh kosong!','Warning!');
+            return redirect()->back();
         }
         
     }
@@ -71,14 +77,14 @@ class BarangController extends BaseController
                 'stock' => $req->input('stock')
             ]);
         }
-        Session::flash('message', 'Success update barang!');
+        Alert::success('Sukses!', 'Barang berhasil diupdate');
         return redirect()->route('admin/showbarang');
     }
 
     public function delete($id)
     {
         Barang::destroy($id);
-        Session::flash('message', 'Berhasil Hapus Barang!');
+        Alert::success("Berhasil hapus barang", "Berhasil!");
         return redirect()->route('admin/showbarang');
     }
 }

@@ -12,6 +12,17 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<!-- Core JS files -->
+	<script type="text/javascript" src="/assets/js/plugins/loaders/pace.min.js"></script>
+	<script type="text/javascript" src="/assets/js/core/libraries/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/plugins/loaders/blockui.min.js"></script>
+	<!-- /core JS files -->
+
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="/assets/js/plugins/notifications/bootbox.min.js"></script>
+	<script type="text/javascript" src="/assets/js/plugins/notifications/sweet_alert.min.js"></script>
+	<script type="text/javascript" src="/assets/js/pages/components_modals.js"></script>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -21,11 +32,6 @@
 	<link href="/assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="/assets/css/colors.css" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
-
-	<!-- Core JS files -->
-	<script type="text/javascript" src="/assets/js/core/libraries/jquery.min.js"></script>
-	<script type="text/javascript" src="/assets/js/core/libraries/bootstrap.min.js"></script>
-	<!-- /core JS files -->
 
 	<!-- Theme JS files -->
 	<script type="text/javascript" src="/assets/js/plugins/ui/nicescroll.min.js"></script>
@@ -48,10 +54,13 @@
 	<script type="text/javascript" src="/assets/js/pages/form_select2.js"></script>
 	<!-- /theme JS files -->
 
+	<!-- sweet_alert -->
+	<link rel="stylesheet" href="/assets/sweetalert2/sweetalert2.min.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="navbar-top">
-
+	@include('sweet::alert')
 	<!-- Main navbar -->
 	<div class="navbar navbar-default navbar-fixed-top header-highlight">
 		<div class="navbar-header">
@@ -69,7 +78,6 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						<img src="/assets/images/image.png" alt="">

@@ -8,6 +8,7 @@ use App\Peminjaman;
 use App\Barang;
 use App\Acc;
 use Session;
+use Alert;
 
 class PeminjamanController extends BaseController
 {
@@ -44,7 +45,7 @@ class PeminjamanController extends BaseController
             'kode' => $kode,
             'activate' => 0,
         ]);
-        Session::flash('message', 'Harap tunggu persetujuan dari admin!');
+        Alert::info('Harap menunggu persetujuan admin','Wait..');
         return redirect('home');
     }
 }

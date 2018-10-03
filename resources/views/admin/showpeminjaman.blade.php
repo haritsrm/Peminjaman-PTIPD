@@ -35,10 +35,7 @@
                                 {{ csrf_field() }}
                                 <button type="submit" class="btn btn-success"><i class="icon-checkmark"></i> Acc</button>
                             </form>
-                            <form action="/admina/block/{{ $v->id }}" method="post" class="col-md-2">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger"><i class="icon-blocked"></i> Block</button>
-                            </form>
+                            <button onclick="block({{$v->id}})" class="btn btn-danger col-md-2"><i class="icon-blocked"></i> Block</button>
                         </td>
                 </tr>
                 <div id="modal{{ $v->kode }}" class="modal fade">
@@ -180,4 +177,31 @@
     </tbody>
 </table>
 </div>
+<script>
+function block(id){
+        var csrf_token = $('meta[name="csrf-token"]').attr('content');
+        swal({
+            title: "Yakin akan memblock?",
+            text: "Peminjaman ini akan diblokir!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((value) => {
+            if(value){
+                return fetch("/admina/block/"+id,{
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-Token": $('input[name="_token"]').val()
+                    }
+                })
+                .then(res => {
+                    location.reload();
+                })
+                .catch(err => {
+                    swal("Oops..", "Something went wrong", "error");
+                })
+            }
+        })
+    }
+</script>
 @endsection

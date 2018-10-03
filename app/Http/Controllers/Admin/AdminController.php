@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
+use Alert;
 
 class AdminController extends BaseController
 {
@@ -38,7 +39,7 @@ class AdminController extends BaseController
             'password' => bcrypt($req->input('password'))
         ]);
         $admin->attachRole(2);
-            Session::flash('message', 'Successfully add admin!');
+            Alert::success('Register Success!', 'Berhasil tambah admin');
             return redirect()->route('admin/new');
     }
 
@@ -53,7 +54,7 @@ class AdminController extends BaseController
         $user = User::find($id);
         $user->detachRoles($user->roles);
         $user->attachRole(4);
-        Session::flash('message', 'Successfully suspend account!');
+        Alert::success('Sukses!', 'Berhasil suspend akun');
         return redirect()->route('admin/show');
     }
 
@@ -62,7 +63,7 @@ class AdminController extends BaseController
         $user = User::find($id);
         $user->detachRoles($user->roles);
         $user->attachRole(2);
-        Session::flash('message', 'Successfully Activate account!');
+        Alert::success('Activation Success!', 'Berhasil aktifkan akun');
         return redirect()->route('admin/show');
     }
 }

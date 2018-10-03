@@ -27,11 +27,7 @@
             <td class="text-center">
                 <div class="form-group row">
                     <button class="btn btn-primary col-sm-4" data-toggle="modal" data-target="#modaledit{{ $v->id }}"><i class="icon-pencil"></i></button>
-                    <form method="post" action="/admina/deletebarang/{{ $v->id }}">
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
-                        <button class="btn btn-danger col-sm-4" type="submit"><i class="icon-trash"></i></button>
-                    </form>
+                    <button class="btn btn-danger col-sm-4" onclick="deleteBarang({{$v->id}})"><i class="icon-trash"></i></button>
                 </div>
             </td>
         </tr>
@@ -39,7 +35,7 @@
         @elseif (Route::is('admin/showruangan'))
         @if($v->type == 'ruangan')
         <tr>
-            <td><img src="/uploads/{{ $v->pict }}" style="width:150px" /></td>
+            <td><img src="/uploads/{{ $v->pict }}" style="width:100px" /></td>
             <td>{{ $v->name }}</td>
             <td>{{ $v->description }}</td>
             <td>{{ $v->stock }}</td>
@@ -47,11 +43,7 @@
             <td class="text-center">
                 <div class="form-group row">
                     <button class="btn btn-primary col-sm-4" data-toggle="modal" data-target="#modaledit{{ $v->id }}"><i class="icon-pencil"></i></button>
-                    <form method="post" action="/admina/deletebarang/{{ $v->id }}">
-                        {{ method_field('DELETE') }}
-                        {{ csrf_field() }}
-                        <button class="btn btn-danger col-sm-4" type="submit"><i class="icon-trash"></i></button>
-                    </form>
+                    <button class="btn btn-danger col-sm-4" onclick="deleteBarang({{$v->id}})"><i class="icon-trash"></i></button>
                 </div>
             </td>
         </tr>
@@ -119,5 +111,34 @@
         @endforeach
     </tbody>
 </table>
+
+<script>
+    function deleteBarang(id){
+        var csrf_token = $('meta[name="csrf-token"]').attr('content');
+        swal({
+            title: "Yakin akan menghapus?",
+            text: "Tidak akan dapat mengembalikan lagi!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        }).then((value) => {
+            if(value){
+                fetch("/admina/deletebarang/"+id,{
+                    method: "DELETE",
+                    headers: {
+                        "X-CSRF-Token": $('input[name="_token"]').val()
+                    }
+                })
+                .then(res => {
+                    location.reload();
+                })
+                .catch(err => {
+                    swal("Oops..", "Something went wrong", "error");
+                })
+            }
+        })
+    }
+</script>
+
 </div>
 @endsection

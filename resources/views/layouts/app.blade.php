@@ -44,9 +44,14 @@
 	<script type="text/javascript" src="/assets/js/pages/form_select2.js"></script>
 	<!-- /theme JS files -->
 
+	<!-- sweet_alert -->
+	<link rel="stylesheet" href="/assets/sweetalert2/sweetalert2.min.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body {{{ (Request::is('login') ? 'class=login-container' : '') }}}
 	  {{{ (Request::is('password/reset') ? 'class=login-container' : '') }}}>
+	
+	@include('sweet::alert')
     <!-- Main navbar -->
 	<div class="navbar navbar-inverse" id="navbar-main">
 		<div class="navbar-header">

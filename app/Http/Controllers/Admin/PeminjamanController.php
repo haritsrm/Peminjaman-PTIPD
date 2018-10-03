@@ -8,6 +8,7 @@ use App\Acc;
 use App\Peminjaman;
 use Session;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Alert;
 
 class PeminjamanController extends BaseController
 {
@@ -27,7 +28,7 @@ class PeminjamanController extends BaseController
         Acc::find($id)->update([
             'activate' => 1,
         ]);
-        Session::flash('message', 'Acc data berhasil!');
+        Alert::success('Acc Success!', 'Peminjaman berhasil di acc');
         return redirect()->route('admin/verifpeminjaman');
     }
 
@@ -36,7 +37,7 @@ class PeminjamanController extends BaseController
         Acc::find($id)->update([
             'activate' => 5,
         ]);
-        Session::flash('message', 'Block data berhasil!');
+        Alert::success('Blocked!', 'Peminjaman di blokir');
         return redirect()->route('admin/verifpeminjaman');
     }
 }
