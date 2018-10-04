@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth', 'role:superadmin' && 'role:admin']], func
     Route::get('/mail', 'MailController@send');
     //setting akun
     Route::get('/admina/setting', 'Admin\SettingController@index');
+    
 });
 
 Route::group(['middleware' => ['auth', 'role:suspend']], function () {
