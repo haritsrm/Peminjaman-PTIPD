@@ -30,9 +30,13 @@
 	<script type="text/javascript" src="/assets/js/pages/login.js"></script>
 	<!-- /theme JS files -->
 
+	<!-- sweet_alert -->
+	<link rel="stylesheet" href="/assets/sweetalert2/sweetalert2.min.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="login-container login-cover">
+	@include('sweet::alert')
 
 	<div class="navbar navbar-inverse" id="navbar-main">
 		<div class="navbar-header">
@@ -66,8 +70,11 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-                                <li><a href="#"><span class="badge bg-blue pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
+								@if(Auth::user()->hasRole('user'))
+                                <li><a href="/profile"><i class="icon-user-plus"></i> My profile</a></li>
+								@else
+                                <li><a href="/admina/profile"><i class="icon-user-plus"></i> My profile</a></li>
+								@endif
                                 <li class="divider"></li>
                                 @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('superadmin'))
                                 <li><a href="/admina/setting"><i class="icon-cog5"></i> Account settings</a></li>
@@ -76,6 +83,8 @@
                                 @endif
 								@if(!Auth::user()->hasRole('user'))
 								<li><a href="/admina"><i class="icon-cog5"></i> Admin Panel</a></li>
+								@else
+								<li><a href="/home"><i class="icon-home"></i> Home</a></li>
 								@endif
                                 <li><a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -116,28 +125,33 @@
 
 						<div class="tab-content panel-body">
 							<div class="tab-pane fade in active" id="basic-tab1">
-								<form action="index.html">
+								@if(Auth::user()->hasRole('user'))
+								<form action="/settingpost" method="post">
+								@else
+								<form action="/admina/settingpost" method="post">
+								@endif
+									{{ csrf_field() }}
 									<div class="text-center">
 										<div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
 										<h5 class="content-group">{{ Auth::user()->name }} <small class="display-block">Form ganti password</small></h5>
 									</div>
 
 									<div class="form-group has-feedback has-feedback-left">
-										<input type="text" class="form-control" placeholder="Password lama" name="pass" required="required">
+										<input type="password" class="form-control" placeholder="Password lama" name="pass">
 										<div class="form-control-feedback">
 											<i class="icon-user text-muted"></i>
 										</div>
 									</div>
 
 									<div class="form-group has-feedback has-feedback-left">
-										<input type="password" class="form-control" placeholder="Password baru" name="newpass" required="required">
+										<input type="password" class="form-control" placeholder="Password baru" name="newpass">
 										<div class="form-control-feedback">
 											<i class="icon-lock2 text-muted"></i>
 										</div>
 									</div>
 
 									<div class="form-group has-feedback has-feedback-left">
-										<input type="password" class="form-control" placeholder="Ulangi password baru" name="newpassagain" required="required">
+										<input type="password" class="form-control" placeholder="Ulangi password baru" name="newpassagain">
 										<div class="form-control-feedback">
 											<i class="icon-lock2 text-muted"></i>
 										</div>
@@ -150,49 +164,54 @@
 								</div>
 
 							<div class="tab-pane fade" id="basic-tab2">
-								<form action="index.html">
+								@if(Auth::user()->hasRole('user'))
+								<form action="/changeprofile" method="post">
+								@else
+								<form action="/admina/changeprofile" method="post">
+								@endif
+									{{ csrf_field() }}
 									<div class="text-center">
 										<div class="icon-object border-success text-success"><i class="icon-plus3"></i></div>
 										<h5 class="content-group">{{ Auth::user()->name }} <small class="display-block">Form ganti info profil</small></h5>
 									</div>
 
 									<div class="form-group has-feedback has-feedback-left">
-										<input type="text" class="form-control" placeholder="Your name" value="{{Auth::user()->name}}">
+										<input name="name" type="text" class="form-control" placeholder="Your name" value="{{Auth::user()->name}}">
 										<div class="form-control-feedback">
 											<i class="icon-user-check text-muted"></i>
 										</div>
 									</div>
 
 									<div class="form-group has-feedback has-feedback-left">
-										<input type="email" class="form-control" placeholder="Your email" value="{{Auth::user()->email}}">
+										<input type="email" name="email" class="form-control" placeholder="Your email" value="{{Auth::user()->email}}">
 										<div class="form-control-feedback">
 											<i class="icon-mention text-muted"></i>
 										</div>
 									</div>
 
                                     <div class="form-group has-feedback has-feedback-left">
-										<input type="text" class="form-control" placeholder="Your address" value="{{Auth::user()->alamat}}">
+										<input type="text" name="alamat" class="form-control" placeholder="Your address" value="{{Auth::user()->alamat}}">
 										<div class="form-control-feedback">
 											<i class="icon-user-check text-muted"></i>
 										</div>
 									</div>
 
                                     <div class="form-group has-feedback has-feedback-left">
-										<input type="text" class="form-control" placeholder="Your phone" value="{{Auth::user()->no_tlp}}">
+										<input type="text" name="no_tlp" class="form-control" placeholder="Your phone" value="{{Auth::user()->no_tlp}}">
 										<div class="form-control-feedback">
 											<i class="icon-user-check text-muted"></i>
 										</div>
 									</div>
                                     @if(!Auth::user()->hasRole('admin') && !Auth::user()->hasRole('superadmin'))
                                     <div class="form-group has-feedback has-feedback-left">
-										<input type="text" class="form-control" placeholder="Your Instance" value="{{Auth::user()->instansi}}">
+										<input type="text" name="instansi" class="form-control" placeholder="Your Instance" value="{{Auth::user()->instansi}}">
 										<div class="form-control-feedback">
 											<i class="icon-user-check text-muted"></i>
 										</div>
 									</div>
 
                                     <div class="form-group has-feedback has-feedback-left">
-										<input type="text" class="form-control" placeholder="Jabatan" value="{{Auth::user()->jabatan}}">
+										<input type="text" name="jabatan" class="form-control" placeholder="Jabatan" value="{{Auth::user()->jabatan}}">
 										<div class="form-control-feedback">
 											<i class="icon-user-check text-muted"></i>
 										</div>

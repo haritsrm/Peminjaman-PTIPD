@@ -46,6 +46,6 @@ class PeminjamanController extends BaseController
             'activate' => 0,
         ]);
         Alert::info('Harap menunggu persetujuan admin','Wait..');
-        return redirect('home');
+        return redirect('daftarpeminjaman');
     }
 }

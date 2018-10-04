@@ -52,7 +52,12 @@ Route::group(['middleware' => ['auth', 'role:superadmin' && 'role:admin']], func
     Route::get('/mail', 'MailController@send');
     //setting akun
     Route::get('/admina/setting', 'Admin\SettingController@index');
-    
+    Route::post('/admina/settingpost', 'Admin\SettingController@changePassword');
+    Route::post('/admina/changeprofile', 'Admin\SettingController@changeProfile');
+    //profile
+    Route::get('/admina/profile', function(){
+        return view('layouts.profile');
+    });
 });
 
 Route::group(['middleware' => ['auth', 'role:suspend']], function () {
@@ -64,9 +69,18 @@ Route::group(['middleware' => ['auth', 'role:suspend']], function () {
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     //Home Controller
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/pinjambarang', 'HomeController@pinjambarang')->name('pinjambarang');
     //Peminjaman
     Route::get('/daftarpeminjaman', 'HomeController@show');
     Route::post('/pinjam', 'User\PeminjamanController@pinjam')->name('pinjam');
     Route::post('/verifikasi', 'User\PeminjamanController@verifikasi')->name('verifikasi');
     Route::post('/pdf/{id}', 'User\PdfController@print');
+    //setting akun
+    Route::get('/setting', 'Admin\SettingController@index');
+    Route::post('/settingpost', 'Admin\SettingController@changePassword');
+    Route::post('/changeprofile', 'Admin\SettingController@changeProfile');
+    //profile
+    Route::get('/profile', function(){
+        return view('layouts.profile');
+    });
 });

@@ -19,7 +19,7 @@ class PeminjamanController extends BaseController
      */
     public function show()
     {
-        $data = Acc::all();
+        $data = Acc::orderBy('created_at', 'desc')->get();
         return view('admin.showpeminjaman')->with('val', $data);
     }
 

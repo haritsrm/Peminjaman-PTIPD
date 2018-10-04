@@ -85,7 +85,6 @@
 
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-                                <li><a href="#"><span class="badge bg-blue pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
                                 <li><a class="dropdown-item" href="{{ route('logout') }}"

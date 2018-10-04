@@ -82,8 +82,11 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-                                <li><a href="#"><span class="badge bg-blue pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
+								@if(Auth::user()->hasRole('user'))
+                                <li><a href="/profile"><i class="icon-user-plus"></i> My profile</a></li>
+								@else
+                                <li><a href="/admina/profile"><i class="icon-user-plus"></i> My profile</a></li>
+								@endif
                                 <li class="divider"></li>
                                 @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('superadmin'))
                                 <li><a href="/admina/setting"><i class="icon-cog5"></i> Account settings</a></li>
@@ -92,6 +95,8 @@
                                 @endif
 								@if(!Auth::user()->hasRole('user'))
 								<li><a href="/admina"><i class="icon-cog5"></i> Admin Panel</a></li>
+								@else
+								<li><a href="/home"><i class="icon-cog5"></i> Home</a></li>
 								@endif
                                 <li><a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

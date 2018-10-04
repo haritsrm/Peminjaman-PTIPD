@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Barang;
 use App\Acc;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,14 +24,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
+    {
+        $x = User::all();
+        return view('dashboard')
+        ->with('data', $x);
+    }
+
+    public function pinjambarang()
     {
         $data = Barang::all();
         return view('home')->with('val',$data);
     }
 
     public function show(){
-        $data = Acc::all();
+        $data = Acc::orderBy('created_at', 'desc')->get();
         return view('daftarpeminjaman')->with('val', $data);
     }
 }
