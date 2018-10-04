@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
 <!-- Registration form -->
@@ -85,15 +85,6 @@
 
                     <div class="form-group has-feedback">
                     <input id="password-confirm" type="password" placeholder="Password Confirmation" class="form-control" name="password_confirmation" required>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" class="styled">
-                                Accept <a href="#">terms of service</a>
-                            </label>
-                        </div>
                     </div>
 
                     <div class="text-right">

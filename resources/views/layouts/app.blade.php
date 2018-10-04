@@ -113,7 +113,7 @@
 		</div>
 	</div>
 	<!-- /main navbar -->
-
+	@if(Auth::user()->hasRole('user'))
 	<!-- Page container -->
 	<div class="page-container">
 
