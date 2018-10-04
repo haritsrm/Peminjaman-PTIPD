@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use Alert;
 
 class LoginController extends Controller
 {
@@ -31,22 +32,22 @@ class LoginController extends Controller
     public function authenticated(){
         if (Auth::user()->hasRole('superadmin'))
         {
-            Session::flash('message', 'Welcome back '.Auth::user()->name.'! Here your dashboard');
+            Alert::success("Here your dashboard", "Welcome back ".Auth::user()->name);
             return redirect()->route('admin');
         }
         else if (Auth::user()->hasRole('admin'))
         {
-            Session::flash('message', 'Welcome back '.Auth::user()->name.'! Here your dashboard');
+            Alert::success("Here your dashboard", "Welcome back ".Auth::user()->name);
             return redirect()->route('admin');
         }
         else if (Auth::user()->hasRole('suspend'))
         {
-            Session::flash('message', 'Welcome back '.Auth::user()->name.'! Here your dashboard');
+            Alert::success("Here your dashboard", "Welcome back ".Auth::user()->name);
             return redirect()->route('index/suspend');
         }
         else
         {
-            Session::flash('message', 'Welcome back '.Auth::user()->name.'! Here your dashboard');
+            Alert::success("Here your dashboard", "Welcome back ".Auth::user()->name);
             return redirect()->route('home');
         }
     }
