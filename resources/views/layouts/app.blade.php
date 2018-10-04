@@ -206,5 +206,6 @@
 
 	</div>
 	<!-- /page container -->
+	@endif
 </body>
 </html>
