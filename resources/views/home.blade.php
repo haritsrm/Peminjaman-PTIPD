@@ -19,13 +19,13 @@
     <tbody>
         {{! $i = 1 }}
         @foreach($val as $v)
-        @if($v->type = "barang" && $v->stock != 0)
+        @if($v->type = "barang" && $v->stock != 0 && $v->status == 1)
         <tr>
             <td><img src="/uploads/{{ $v->pict }}" style="width:150px" /></td>
             <td>{{ $v->name }}</td>
             <td>{{ $v->description }}</td>
             <td>{{ $v->stock }}</td>
-            <td><span class="label label-success">Active</span></td>
+            <td><span class="label label-success">Dapat dipinjam</span></td>
             <td class="text-center">
                 <div class="checkbox checkbox-right">
                     <label>

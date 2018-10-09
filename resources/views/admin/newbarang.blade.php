@@ -16,14 +16,15 @@
 
         <div class="panel-body">
             <div class="form-group">
-                <label class="col-lg-3 control-label">Nama Barang:</label>
+
+                <label class="col-lg-3 control-label">Nama :</label>
                 <div class="col-lg-9">
-                    <input type="text" name="name" class="form-control" placeholder="Nama Barang">
+                    <input type="text" name="name" class="form-control" placeholder="Nama Barang" required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 control-label">Tipe Barang:</label>
+                <label class="col-lg-3 control-label">Tipe :</label>
                 <div class="col-lg-9">
                     <select class="select-search" name="type">
                         <option value="barang" {{{ (Request::is('admina/newbarang') ? 'selected=selected' : '') }}}>Barang</option>
@@ -35,21 +36,31 @@
             <div class="form-group">
                 <label class="col-lg-3 control-label">Foto:</label>
                 <div class="col-lg-9">
-                    <input type="file" name="pict">
+                    <input type="file" name="pict" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-lg-3 control-label">Stok:</label>
                 <div class="col-lg-9">
-                    <input type="number" name="stock" class="form-control" min=1 value=1>
+                    <input type="number" name="stock" class="form-control" min=1 value=1 required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-lg-3 control-label">Keterangan:</label>
                 <div class="col-lg-9">
-                    <textarea name="description" class="form-control" placeholder="Keterangan"></textarea>
+                    <textarea name="description" class="form-control" placeholder="Keterangan" required></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Status :</label>
+                <div class="col-lg-9">
+                    <select class="select-search" name="status">
+                        <option value="1">Dapat dipinjam</option>
+                        <option value="0">Tidak untuk dipinjam</option>
+                    </select>
                 </div>
             </div>
 

@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Acc extends Model
 {
     protected $fillable = [
-        'kode', 'activate',
+        'kode', 'activate', 'by',
     ];
 }

@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth', 'role:superadmin' && 'role:admin']], func
     Route::post('/admina/kembali/{id}', 'Admin\PengembalianController@kembali');
     //email
     Route::get('/mail', 'MailController@send');
+    //Histori
+    Route::get('/admina/history', 'Admin\HistoryController@index');
 });
 
 Route::group(['middleware' => ['auth', 'role:suspend']], function () {

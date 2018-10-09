@@ -164,13 +164,28 @@
 
                                 <li class="navigation-header"><span>Peminjaman & Pengembalian</span> <i class="icon-menu" title="Peminjaman & Pengembalian"></i></li>
                                 <li>
-                                    <a href="#"><i class="icon-newspaper"></i> <span>Peminjaman</span></a>
+                                    <a href="#"><i class="icon-newspaper"></i> <span>Peminjaman
+                                    	@if(App\Acc::where('activate', 0)->count() != 0)
+                                    		<span class="badge badge-danger">{{ App\Acc::where('activate', 0)->count() }}</span>
+                                    	@endif
+                                    </span></a>
 									<ul>
                                         <li {{{ (Request::is('admina/peminjaman') ? 'class=active' : '') }}}><a href="/admina/peminjaman">Daftar Peminjaman</a></li>
-                                        <li {{{ (Request::is('admina/verifikasipeminjaman') ? 'class=active' : '') }}}><a href="/admina/verifikasipeminjaman">Verifikasi Peminjaman</a></li>
+                                        <li {{{ (Request::is('admina/verifikasipeminjaman') ? 'class=active' : '') }}}><a href="/admina/verifikasipeminjaman">Verifikasi Peminjaman
+                                        @if(App\Acc::where('activate', 0)->count() != 0)
+                                    		<span class="badge badge-danger">{{ App\Acc::where('activate', 0)->count() }}</span>
+                                    	@endif
+                                    	</a></li>
 									</ul>
 								</li>
-								<li {{{ (Request::is('admina/pengembalian') ? 'class=active' : '') }}}><a href="/admina/pengembalian"><i class="icon-grab"></i><span>Pengembalian Barang</span></a></li>
+								<li {{{ (Request::is('admina/pengembalian') ? 'class=active' : '') }}}><a href="/admina/pengembalian"><i class="icon-grab"></i><span>Pengembalian Barang
+									@if(App\Acc::where('activate', 1)->count() != 0)
+                                    		<span class="badge badge-danger">{{ App\Acc::where('activate', 1)->count() }}</span>
+                                    @endif
+								</span></a>
+								</li>
+								<li class="navigation-header"><span>History</span> <i class="icon-menu" title="Peminjaman & Pengembalian"></i></li>
+								<li {{{ (Request::is('admina/history') ? 'class=active' : '') }}}><a href="/admina/history"><i class="icon-grab"></i><span>Histori Peminjaman</span></a>
 								<!-- /main -->
 
 							</ul>
@@ -200,6 +215,7 @@
                                 <span class="text-semibold">{{{ (Request::is('admina/newruangan') ? 'Tambah Ruangan' : '') }}}</span>
                                 <span class="text-semibold">{{{ (Request::is('admina/peminjaman') ? 'Data Peminjaman' : '') }}}</span>
                                 <span class="text-semibold">{{{ (Request::is('admina/verifikasipeminjaman') ? 'Verifikasi Peminjaman' : '') }}}</span>
+                                <span class="text-semibold">{{{ (Request::is('admina/history') ? 'Histori Peminjaman' : '') }}}</span>
                                 <span class="text-semibold">{{{ (Request::is('admina/pengembalian') ? 'Form Pengembalian' : '') }}}</span>  - Admin Panel
                             </h4>
 						</div>

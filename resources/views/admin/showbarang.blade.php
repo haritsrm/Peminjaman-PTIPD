@@ -23,7 +23,17 @@
             <td>{{ $v->name }}</td>
             <td>{{ $v->description }}</td>
             <td>{{ $v->stock }}</td>
-            <td><span class="label label-success">Active</span></td>
+            <td>
+                @if($v->status == 1)
+                <span class="label label-success">
+                    Dapat dipinjam
+                </span>
+                @else
+                <span class="label label-danger">
+                    Tidak dapat dipinjam
+                </span>
+                @endif
+            </td>
             <td class="text-center">
                 <div class="form-group row">
                     <button class="btn btn-primary col-sm-4" data-toggle="modal" data-target="#modaledit{{ $v->id }}"><i class="icon-pencil"></i></button>
@@ -36,8 +46,11 @@
             </td>
         </tr>
         @endif
+
+
         @elseif (Route::is('admin/showruangan'))
         @if($v->type == 'ruangan')
+        <div class="panel panel-flat">
         <tr>
             <td><img src="/uploads/{{ $v->pict }}" style="width:150px" /></td>
             <td>{{ $v->name }}</td>

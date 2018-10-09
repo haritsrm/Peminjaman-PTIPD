@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Peminjaman;
 use App\Barang;
+use App\History;
 use App\Acc;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 class PeminjamanController extends BaseController
 {
@@ -43,6 +45,12 @@ class PeminjamanController extends BaseController
         Acc::create([
             'kode' => $kode,
             'activate' => 0,
+            'by' => Auth::user()->name,
+        ]);
+        History::create([
+            'kode' => $kode,
+            'activate' => 0,
+            'by' => Auth::user()->name,
         ]);
         Session::flash('message', 'Harap tunggu persetujuan dari admin!');
         return redirect('home');

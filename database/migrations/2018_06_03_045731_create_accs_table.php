@@ -17,6 +17,7 @@ class CreateAccsTable extends Migration
             $table->increments('id');
             $table->string('kode')->unique();
             $table->integer('activate');
+            $table->string('by');
             $table->timestamps();
         });
     }

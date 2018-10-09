@@ -49,6 +49,7 @@
     </div>
     
     <div class="w3-quarter">
+      <a href="/admina/showuser">
       <div class="w3-container w3-red w3-text-white w3-padding-16">
         <div class="w3-left"><img src="/images/Users.png" style="width: 80px;height: 80px"></div>
         <div class="w3-right">
@@ -65,6 +66,7 @@
         <div class="w3-clear"></div>
         <h4> Data Users</h4>
       </div>
+      </a>
     </div>
   </div>
   <hr>
